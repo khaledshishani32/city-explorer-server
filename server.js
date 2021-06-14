@@ -6,7 +6,7 @@ const cors = require('cors');
 app.use(cors()) // after you initialize your express app instance
 
 require('dotenv').config();
-const port = process.env.port;
+const port = process.env.PORT;
 
 // a server endpoint 
 app.get('/', // our endpoint name
@@ -14,4 +14,6 @@ app.get('/', // our endpoint name
   res.send('Hello World') // our endpoint function response
 })
  
-app.listen(port) // kick start the express server to work
+app.listen(port,()=>{
+    console.log(`server running in port: ${port}`)
+}) // kick start the express server to work
