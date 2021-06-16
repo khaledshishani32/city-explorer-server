@@ -61,7 +61,7 @@ app.get('/movies', (req, res)=>{
 class Movie {
     constructor(item) {
         this.title=item.title;
-        this.overview=item.overview;
+        this.overView=item.overview;
         this.vote_average=item.vote_average;
         this.total_votes=item.total_votes;
         
