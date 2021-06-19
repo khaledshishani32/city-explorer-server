@@ -1,4 +1,4 @@
-class Movie {
+class Movies {
   constructor(item) {
     this.title = item.title;
     this.overView = item.overview;
@@ -10,4 +10,4 @@ class Movie {
   }
 }
 
-module.exports=Movie
+module.exports=Movies
