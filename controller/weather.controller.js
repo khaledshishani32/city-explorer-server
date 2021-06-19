@@ -1,25 +1,24 @@
-const Weather =('./models/Weather.model');
-const axios = require("axios");
-const WEATHER_API_KEY = process.env.WEATHER_API_KEY;
-require("dotenv").config();
+const axios = require('axios');
+const Weather = require('../models/Weather.model');
+require('dotenv').config();
+const WEATHER_BIT_KEY = process.env.WEATHER_BIT_KEY;
+
 const weatherController = (req, res) => {
-  const lon = req.query.lon;
-  const lat = req.query.lat;
-  if (lon && lat) {
-    const weatherBit = `https://api.weatherbit.io/v2.0/forecast/daily?key=${WEATHER_API_KEY}&lat=${lat}&lon=${lon}`;
-    axios
-      .get(weatherBit)
-      .then((response) => {
-        const resData = response.data.data.map((obj) => new Weather(obj));
-        res.json(resData);
-      })
-      .catch((error) => {
-        res.send("an error in weatherbit api");
-      });
-  } else {
-    res.send("please enter the lon and lat");
-  }
+    const lat = req.query.lat;
+    const lon = req.query.lon;
+    if (lat && lon) {
+        const weatherBitUrl = `https://api.weatherbit.io/v2.0/forecast/daily?key=${WEATHER_BIT_KEY  }&lat=${lat}&lon=${lon}`;
+
+        axios.get(weatherBitUrl).then(response => {
+            const responseData = response.data.data.map(obj => new Weather(obj));
+            res.json(responseData)
+        }).catch(error => {
+            res.send(error.message)
+        });
+    } else {
+        res.send('please provide the proper lat and lon')
+    }
 };
 
-
+// we are exporting the model, making it visible to the other files
 module.exports = weatherController;

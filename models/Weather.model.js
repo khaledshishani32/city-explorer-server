@@ -1,9 +1,9 @@
-// weather class to moduling data need
 class Weather {
-  constructor(obj) {
-    this.description = obj.weather.description;
-    this.date = obj.valid_date;
+  constructor(weatherData) {
+      this.description = weatherData.weather.description;
+      this.date = weatherData.valid_date;
+
   }
 }
 
-module.exports =Weather;
+module.exports = Weather;

@@ -1,7 +1,7 @@
 const express = require("express"); // require the express package
 const app = express(); // initialize your express app instance
 
-const moviesData = require("./data/movies.json");
+//const moviesData = require("./data/movies.json");
 
 const weatherController= require('./controller/weather.controller');
 const indexController = require('./controller/index.controller');
